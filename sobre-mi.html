@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Información personal de Iyán Solís Rodríguez: datos de contacto, fotografía, historia y formación.">
+    <title>Sobre mí · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion">
+            <span aria-hidden="true">☰</span> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html" aria-current="page">Sobre mí</a></li>
+                <li><a href="musica.html">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido">
+
+        <header>
+            <h1>Sobre mí</h1>
+        </header>
+
+        <section aria-labelledby="titulo-datos">
+            <h2 id="titulo-datos">Datos personales</h2>
+
+            <figure>
+                <img src="media/foto-personal.jpg" width="1000" height="800"
+                     alt="Fotografía personal de Iyán Solís Rodríguez">
+                <figcaption>Fotografía personal</figcaption>
+            </figure>
+
+            <dl>
+                <dt>Nombre</dt>
+                <dd>Iyán</dd>
+
+                <dt>Apellidos</dt>
+                <dd>Solís Rodríguez</dd>
+
+                <dt>Correo electrónico</dt>
+                <dd><a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a></dd>
+
+                <dt>Formación actual</dt>
+                <dd>Máster Universitario en Ingeniería Web</dd>
+
+                <dt>Ubicación</dt>
+                <dd>Luanco, Asturias (España)</dd>
+            </dl>
+        </section>
+
+        <section aria-labelledby="titulo-historia">
+            <h2 id="titulo-historia">Un poco de historia</h2>
+
+            <p>
+                Siempre me ha interesado cómo se construyen las cosas, y con la web
+                pasó lo mismo: empecé explorando HTML y CSS por mi cuenta y ahora
+                curso el Máster en Ingeniería Web para profundizar en estándares,
+                computación web y experiencia de usuario.
+            </p>
+
+            <p>
+                Además de la tecnología, dedico mi tiempo libre a la música, al cine,
+                a los videojuegos, al deporte y a viajar siempre que puedo. En este
+                sitio comparto un poco de todo eso.
+            </p>
+        </section>
+
+        <section aria-labelledby="titulo-formacion">
+            <h2 id="titulo-formacion">Formación</h2>
+
+            <table>
+                <caption>Resumen de mi formación académica</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Etapa</th>
+                        <th scope="col">Institución</th>
+                        <th scope="col">Periodo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Grado universitario</td>
+                        <td>Ámbito de ingeniería e informática</td>
+                        <td>Concluido</td>
+                    </tr>
+
+                    <tr>
+                        <td>Máster Universitario en Ingeniería Web</td>
+                        <td>Universidad de Oviedo</td>
+                        <td>2026 – 2027</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <aside aria-labelledby="titulo-breve">
+            <h2 id="titulo-breve">En pocas palabras</h2>
+
+            <ul>
+                <li>Curioso y autodidacta.</li>
+                <li>Aficionado a la música, el cine, los viajes y los videojuegos.</li>
+                <li>Estudiante del Máster en Ingeniería Web.</li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto:</strong>
+            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+        </address>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript.
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Música y podcast de Iyán Solís Rodríguez: Extremoduro y The Wild Project.">
+    <title>Música · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion">
+            <span aria-hidden="true">☰</span> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="musica.html" aria-current="page">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido">
+
+        <header>
+            <h1>Música</h1>
+        </header>
+
+        <article>
+            <header>
+                <h2>Extremoduro</h2>
+            </header>
+
+            <figure>
+                <img src="media/musica-extremoduro.jpg" width="800" height="500"
+                     alt="Imagen del grupo Extremoduro">
+                <figcaption>Extremoduro, mi grupo favorito.</figcaption>
+            </figure>
+
+            <p>
+                Extremoduro es, sin duda, el grupo que más escucho. Formado en los años 80
+                y liderado por Roberto Iniesta, «Robe», practican un rock crudo y directo
+                con unas letras que mezclan la poesía más cuidada con la lengua de la calle.
+            </p>
+
+            <p>
+                Sus discos, de «Rock transgresivo» hasta «La ley innata» o «Para todos los
+                públicos», no solo cuentan historias: reflejan una forma de vivir. Por eso
+                el rock de Extremoduro me acompaña desde hace años y lo sigo escuchando
+                entero, del primer corte al último.
+            </p>
+        </article>
+
+        <section id="podcast" aria-labelledby="titulo-podcast">
+            <h2 id="titulo-podcast">Podcast: <span lang="en">The Wild Project</span></h2>
+
+            <p>
+                El podcast que no me pierdo es <strong lang="en">The Wild Project</strong>,
+                de Jordi Wild: conversaciones largas con invitados de muy distintos ámbitos,
+                desde la ciencia y la tecnología hasta el misterio y la cultura. Un fragmento:
+            </p>
+
+            <figure>
+                <audio controls preload="none">
+                    <source src="media/podcast.wav" type="audio/wav">
+                    <p>
+                        Tu navegador no soporta el elemento <code>audio</code>.
+                        Puedes descargar el fragmento:
+                        <a href="media/podcast.wav">podcast.wav</a>.
+                    </p>
+                </audio>
+
+                <figcaption>
+                    Fragmento del podcast <span lang="en">The Wild Project</span>
+                    (archivo de audio de ejemplo).
+                </figcaption>
+            </figure>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto:</strong>
+            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+        </address>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript.
+        </p>
+    </footer>
+
+</body>
+</html>

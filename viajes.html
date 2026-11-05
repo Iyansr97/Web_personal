@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Destino favorito de Iyán Solís Rodríguez: Egipto, y vídeo de viaje.">
+    <title>Viajes · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion">
+            <span aria-hidden="true">☰</span> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="musica.html">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html" aria-current="page">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido">
+
+        <header>
+            <h1>Viajes</h1>
+        </header>
+
+        <article>
+            <header>
+                <h2>Egipto</h2>
+            </header>
+
+            <figure>
+                <img src="media/viaje-egipto.jpg" width="654" height="468"
+                     alt="Paisaje de Egipto con las pirámides">
+                <figcaption>
+                    Las pirámides de Egipto, uno de los destinos que más me impresionan.
+                </figcaption>
+            </figure>
+
+            <p>
+                Egipto es el destino que más me llama la atención. La idea de recorrer el
+                valle del Nilo y ver en persona las pirámides de Giza, los templos de Luxor
+                y Karnak o los colosos de Abu Simbel es algo que llevo años queriendo hacer.
+            </p>
+
+            <p>
+                No es solo su historia milenaria: también me atrae el desierto, los mercados,
+                el río y esa sensación de estar ante civilizaciones que construyeron
+                monumentos que siguen en pie cinco mil años después.
+            </p>
+        </article>
+
+        <section aria-labelledby="titulo-video">
+            <h2 id="titulo-video">Vídeo de viaje</h2>
+
+            <figure>
+                <video controls preload="metadata" poster="media/viaje-egipto.jpg">
+                    <source src="media/video-viajes.mp4" type="video/mp4">
+                    <p>
+                        Tu navegador no soporta el elemento <code>video</code>.
+                        Puedes descargar el vídeo:
+                        <a href="media/video-viajes.mp4">video-viajes.mp4</a>.
+                    </p>
+                </video>
+
+                <figcaption>Vídeo de viaje (archivo de vídeo de ejemplo).</figcaption>
+            </figure>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto:</strong>
+            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+        </address>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript.
+        </p>
+    </footer>
+
+</body>
+</html>

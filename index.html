@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Sitio web personal de Iyán Solís Rodríguez: información personal, aficiones e intereses.">
+    <title>Iyán Solís Rodríguez · Inicio</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion">
+            <span aria-hidden="true">☰</span> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="musica.html">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contenido">
+
+        <header>
+            <h1>Hola, soy Iyán Solís Rodríguez</h1>
+
+            <p>
+                Estudiante del <strong>Máster Universitario en Ingeniería Web</strong>.
+                Este es mi sitio web personal: un espacio donde cuento quién soy y
+                comparto mis aficiones e intereses como la música que escucho, las
+                películas que me gustan, los viajes, los deportes, los videojuegos a
+                los que juego y mi interés por la tecnología y la web.
+            </p>
+
+            <p>
+                El sitio está construido siguiendo los estándares web: HTML5 con
+                marcado semántico, CSS3 y JavaScript, sin frameworks.
+            </p>
+
+            <p>
+                Última actualización:
+                <time datetime="2026-09-24">24 de septiembre de 2026</time>
+            </p>
+        </header>
+
+        <section aria-labelledby="titulo-temas">
+            <h2 id="titulo-temas">Lo que encontrarás en este sitio</h2>
+
+            <ul>
+                <li>
+                    <article>
+                        <a href="sobre-mi.html">
+                            <figure>
+                                <img src="media/foto-personal.jpg" width="1000" height="800"
+                                     alt="Fotografía personal de Iyán Solís Rodríguez">
+                            </figure>
+                            <h3>Sobre mí</h3>
+                            <p>Información personal, formación y datos de contacto.</p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="musica.html">
+                            <figure>
+                                <img src="media/musica-extremoduro.jpg" width="800" height="500"
+                                     alt="Imagen del grupo Extremoduro" loading="lazy">
+                            </figure>
+                            <h3>Música</h3>
+                            <p>
+                                Extremoduro, mi grupo favorito, y el podcast
+                                <span lang="en">The Wild Project</span>.
+                            </p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="cine-series.html">
+                            <figure>
+                                <img src="media/cine-piratas.jpg" width="480" height="360"
+                                     alt="Póster de Piratas del Caribe: El cofre del hombre muerto" loading="lazy">
+                            </figure>
+                            <h3>Cine y series</h3>
+                            <p>Piratas del Caribe: El cofre del hombre muerto, mi película favorita.</p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="viajes.html">
+                            <figure>
+                                <img src="media/viaje-egipto.jpg" width="654" height="468"
+                                     alt="Paisaje de Egipto con las pirámides" loading="lazy">
+                            </figure>
+                            <h3>Viajes</h3>
+                            <p>Egipto, el destino que más quiero conocer, y un vídeo de viaje.</p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="deportes.html">
+                            <figure>
+                                <img src="media/deporte-balonmano.jpg" width="597" height="335"
+                                     alt="Partido de balonmano" loading="lazy">
+                            </figure>
+                            <h3>Deportes</h3>
+                            <p>El balonmano, el deporte que más sigo.</p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="videojuegos.html">
+                            <figure>
+                                <img src="media/juego-sekiro.jpg" width="616" height="353"
+                                     alt="Arte del videojuego Sekiro: Shadows Die Twice" loading="lazy">
+                            </figure>
+                            <h3>Videojuegos</h3>
+                            <p>Sekiro, el juego de acción que más me ha marcado.</p>
+                        </a>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <a href="tecnologia.html">
+                            <figure>
+                                <img src="media/tec-ia.jpg" width="612" height="408"
+                                     alt="Persona escribiendo en el teclado de un ordenador portátil" loading="lazy">
+                            </figure>
+                            <h3>Tecnología y Web</h3>
+                            <p>La inteligencia artificial y su papel en el desarrollo web.</p>
+                        </a>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <aside aria-labelledby="titulo-destacado">
+            <h2 id="titulo-destacado">¿Quieres conocerme mejor?</h2>
+
+            <p>
+                Empieza por <a href="sobre-mi.html">Sobre mí</a> o escucha el
+                <a href="musica.html#podcast">podcast recomendado</a>.
+            </p>
+        </aside>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto:</strong>
+            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+        </address>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript.
+        </p>
+    </footer>
+
+</body>
+</html>

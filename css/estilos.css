@@ -1,0 +1,262 @@
+/* estilos.css — Sitio web personal (Práctica II ECW)
+   Sin clases ni id: solo selectores de elemento, atributo y combinadores. */
+
+/* VARIABLES (tema claro por defecto, oscuro según el sistema) */
+
+:root {
+    color-scheme: light dark;
+    --fondo: #eef5ff;
+    --superficie: #fff;
+    --texto: #33415c;
+    --titulo: #123a7a;
+    --acento: #1a4fa8;
+    --suave: #d6e7ff;
+    --borde: #cfe0fa;
+    --primario: #1a4fa8;
+    --oscuro: #081a3f;
+    --claro: #9cc4ff;
+    --radio: 1rem;
+    --espacio: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #06122b;
+        --superficie: #0d1f45;
+        --texto: #d6e2f5;
+        --titulo: #eef5ff;
+        --acento: #9cc4ff;
+        --suave: #12295a;
+        --borde: #1d3566;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    nav a, li > article { transition: translate .2s, box-shadow .2s, background-color .2s; }
+}
+
+/* BASE */
+
+*, ::before, ::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font: 1.125rem/1.7 system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
+}
+
+h1, h2, h3 {
+    color: var(--titulo);
+    line-height: 1.2;
+    text-align: center;
+    text-wrap: balance;
+}
+
+a { color: var(--acento); text-underline-offset: .2em; }
+
+:focus-visible { outline: 3px solid #f5a623; outline-offset: 3px; }
+
+/* Evita que la cabecera fija tape el destino de un ancla */
+[id] { scroll-margin-top: 6rem; }
+
+/* MULTIMEDIA */
+
+img, video, audio { display: block; width: 100%; max-width: 100%; margin-inline: auto; }
+img { height: auto; border-radius: .75rem; }
+
+figure { max-width: 40rem; margin: var(--espacio) auto; text-align: center; }
+figcaption { margin-top: .6rem; font-size: .9em; font-style: italic; }
+
+/* Imagen principal de cada apartado: mismo tamaño en todas las páginas */
+main > article img { aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* ENLACE PARA SALTAR AL CONTENIDO */
+
+body > a:first-child {
+    position: absolute;
+    top: -4rem;
+    left: 1rem;
+    z-index: 10;
+    padding: .5rem 1rem;
+    background: var(--superficie);
+    border-radius: .5rem;
+}
+
+body > a:first-child:focus { top: 1rem; }
+
+/* CABECERA Y NAVEGACIÓN */
+
+body > header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem max(1rem, (100% - 75rem) / 2);
+    color: #fff;
+    background: color-mix(in srgb, var(--oscuro) 92%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+body > header > p { margin: 0; font-size: 1.25rem; font-weight: 800; }
+body > header a { color: #fff; text-decoration: none; }
+
+/* El botón solo aparece en móvil y cuando JavaScript le añade aria-expanded */
+body > header button {
+    display: none;
+    padding: .4rem 1rem;
+    font: inherit;
+    color: #fff;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 99px;
+    cursor: pointer;
+}
+
+nav ul { display: flex; flex-wrap: wrap; gap: .25rem; margin: 0; padding: 0; list-style: none; }
+
+nav a {
+    display: block;
+    padding: .35rem .9rem;
+    font-size: .95em;
+    border-radius: 99px;
+}
+
+nav a:hover, nav a[aria-current="page"] { background: var(--primario); }
+nav a[aria-current="page"] { font-weight: 700; }
+
+/* CONTENIDO PRINCIPAL */
+
+main { width: min(100% - 2rem, 75rem); margin-inline: auto; padding-block: 2rem 3rem; }
+
+/* Cabecera de cada página */
+main > header {
+    margin-bottom: 2rem;
+    padding: clamp(2rem, 6vw, 3.5rem) 1.5rem;
+    text-align: center;
+    color: #fff;
+    background: var(--primario);
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 2px rgb(8 26 63 / .05), 0 8px 24px rgb(8 26 63 / .08);
+}
+
+main > header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); color: inherit; }
+main > header p { max-width: 50rem; margin: 1rem auto 0; }
+
+/* Bloques de contenido */
+main > article, main > section, main > aside {
+    margin-block: var(--espacio);
+    padding: clamp(1rem, 3vw, 2rem);
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: 0 1px 2px rgb(8 26 63 / .05), 0 8px 24px rgb(8 26 63 / .08);
+}
+
+main > aside { background: var(--suave); border-color: transparent; box-shadow: none; }
+
+main > * > h2:first-child, main > * > header h2 { margin-top: 0; }
+
+/* TARJETAS DEL INICIO */
+
+ul:has(> li > article) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--espacio);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li > article {
+    height: 100%;
+    overflow: hidden;
+    background: var(--fondo);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+li > article:hover, li > article:focus-within {
+    translate: 0 -4px;
+    box-shadow: 0 1px 2px rgb(8 26 63 / .05), 0 8px 24px rgb(8 26 63 / .08);
+}
+
+/* En tema oscuro la sombra es más intensa (aside no lleva sombra) */
+@media (prefers-color-scheme: dark) {
+    main > header, main > article, main > section,
+    li > article:hover, li > article:focus-within { box-shadow: 0 8px 24px rgb(0 0 0 / .35); }
+}
+
+li > article a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 1.25rem;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+}
+
+li > article figure { max-width: none; margin: 0; }
+li > article img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0; }
+li > article h3 { margin: 1rem 1rem .4rem; }
+li > article a:hover h3 { color: var(--acento); }
+li > article p { margin: 0 1.25rem; font-size: .95em; }
+
+/* DATOS PERSONALES: foto a la izquierda, datos a la derecha */
+
+section:has(> dl) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio); }
+section:has(> dl) > h2 { grid-column: 1 / -1; }
+section:has(> dl) > figure { margin: 0; }
+
+dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-content: space-evenly;
+    gap: .5rem 1.25rem;
+    margin: 0;
+}
+
+dt { font-weight: 900; color: var(--titulo); }
+dd { margin: 0; overflow-wrap: anywhere; }
+address { font-style: normal; }
+
+/* TABLAS */
+
+table { width: 100%; border-collapse: collapse; }
+caption { margin-bottom: .75rem; font-weight: 700; color: var(--titulo); }
+th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--borde); }
+thead th { color: #fff; background: var(--primario); }
+tbody tr:hover { background: var(--fondo); }
+
+/* PIE */
+
+body > footer { padding: 2rem 1rem; text-align: center; color: #fff; background: var(--oscuro); }
+body > footer a { color: var(--claro); }
+body > footer p { margin: .5rem 0 0; font-size: .9em; }
+
+/* MÓVIL */
+
+@media (max-width: 48.75rem) {
+    body > header { position: static; }
+    body > header button[aria-expanded] { display: block; }
+    button[aria-expanded="false"] + nav { display: none; }
+    nav { width: 100%; }
+    nav ul { flex-direction: column; text-align: center; }
+    section:has(> dl), dl { grid-template-columns: 1fr; }
+    dl { gap: 0; }
+    dd { margin-bottom: .75rem; }
+}
+
+/* IMPRESIÓN */
+
+@media print {
+    body > a:first-child, body > header, body > footer, video, audio { display: none; }
+    body, main > header { color: #000; background: none; }
+    main > * { box-shadow: none; }
+}
