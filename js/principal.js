@@ -13,6 +13,21 @@
   const anio = document.getElementById('anio');
   if (anio) anio.textContent = String(new Date().getFullYear());
 
+  /* Selector de idioma (details): se cierra al pulsar fuera o con Escape */
+  const idiomas = document.querySelector('body > header > details');
+  if (idiomas) {
+    document.addEventListener('click', (evento) => {
+      if (idiomas.open && !idiomas.contains(evento.target)) idiomas.open = false;
+    });
+    idiomas.addEventListener('keydown', (evento) => {
+      if (evento.key === 'Escape' && idiomas.open) {
+        evento.stopPropagation();
+        idiomas.open = false;
+        idiomas.querySelector('summary').focus();
+      }
+    });
+  }
+
   /* 2. Menú móvil: el CSS muestra el botón y oculta la navegación y el buscador
         solo cuando el botón tiene aria-expanded, así que se añade aquí al iniciar */
   const boton = document.getElementById('btn-menu');
