@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Search engine for the personal website of Iyán Solís Rodríguez.">
+    <title>Search · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="../buscar.html">
+    <link rel="alternate" hreflang="en" href="search.html">
+    <link rel="alternate" hreflang="x-default" href="../buscar.html">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../js/principal.js" defer></script>
+    <script src="../js/indice-busqueda.js" defer></script>
+    <script src="../js/buscador.js" defer></script>
+    <script src="../js/usabilidad.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Skip to main content</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <a href="../buscar.html" hreflang="es" lang="es">Español</a>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
+            <span aria-hidden="true">☰</span> Menu
+        </button>
+
+        <nav id="navegacion" aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="film-tv.html">Film and TV</a></li>
+                <li><a href="travel.html">Travel</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="video-games.html">Video games</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </nav>
+
+        <form id="busqueda" role="search" action="search.html" aria-label="Site search">
+            <label for="q-cabecera">Search this site</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Search…" required>
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main id="contenido">
+
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html" aria-current="page">Search</a></li>
+            </ol>
+        </nav>
+
+        <header>
+            <h1>Search</h1>
+            <p>Search all the content of the site: hobbies, education, projects, contact…</p>
+        </header>
+
+        <section aria-labelledby="titulo-resultados">
+            <form id="form-busqueda" role="search" action="search.html" aria-label="Search the results">
+                <label for="q-pagina">What are you looking for?</label>
+                <p>
+                    <input id="q-pagina" type="search" name="q" required>
+                    <button type="submit">Search</button>
+                </p>
+            </form>
+
+            <h2 id="titulo-resultados">Results</h2>
+
+            <p id="resumen-busqueda" role="status">Type one or more words and press “Search”.</p>
+
+            <ol id="resultados"></ol>
+
+            <noscript>
+                <p>
+                    The search engine needs JavaScript. You can find every page in the
+                    <a href="help.html#titulo-mapa">site map</a>.
+                </p>
+            </noscript>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contact</strong>
+            <ul aria-label="Email and social networks">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
+        </address>
+
+        <p>Last updated: <time datetime="2026-11-12">12 November 2026</time></p>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Personal website built with HTML5, CSS3 and JavaScript. · <a href="help.html">Help and accessibility</a>
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Ayuda del sitio web de Iyán Solís Rodríguez: mapa del sitio, preguntas frecuentes, accesibilidad y formulario de opinión.">
+    <title>Ayuda · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="ayuda.html">
+    <link rel="alternate" hreflang="en" href="en/help.html">
+    <link rel="alternate" hreflang="x-default" href="ayuda.html">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" defer></script>
+    <script src="js/formulario.js" defer></script>
+    <script src="js/usabilidad.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <a href="en/help.html" hreflang="en" lang="en">English</a>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
+            <span aria-hidden="true">☰</span> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="musica.html">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+                <li><a href="ayuda.html" aria-current="page">Ayuda</a></li>
+            </ul>
+        </nav>
+
+        <form id="busqueda" role="search" action="buscar.html" aria-label="Buscador del sitio">
+            <label for="q-cabecera">Buscar en el sitio</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Buscar…" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main id="contenido">
+
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ayuda.html" aria-current="page">Ayuda</a></li>
+            </ol>
+        </nav>
+
+        <header>
+            <h1>Ayuda</h1>
+            <p>Cómo moverte por el sitio, preguntas frecuentes y un formulario para enviarme tu opinión.</p>
+        </header>
+
+        <section aria-labelledby="titulo-mapa">
+            <h2 id="titulo-mapa">Mapa del sitio</h2>
+
+            <ul>
+                <li><a href="index.html">Inicio</a>: presentación y acceso a todas las secciones.</li>
+                <li><a href="sobre-mi.html">Sobre mí</a>: datos personales, formación, experiencia laboral, proyectos, referencias y contacto.</li>
+                <li><a href="musica.html">Música</a>: mi grupo y mi canción favoritos y el podcast que escucho.</li>
+                <li><a href="cine-series.html">Cine y series</a>: mi película favorita y mi escena preferida.</li>
+                <li><a href="viajes.html">Viajes</a>: Egipto, la ruta que me gustaría hacer y un vídeo de viaje.</li>
+                <li><a href="deportes.html">Deportes</a>: el balonmano y mi experiencia jugando.</li>
+                <li><a href="videojuegos.html">Videojuegos</a>: Sekiro y otros juegos que me gustan.</li>
+                <li><a href="tecnologia.html">Tecnología</a>: la inteligencia artificial en el desarrollo web.</li>
+                <li><a href="buscar.html">Buscar</a>: buscador de todo el contenido del sitio.</li>
+                <li><a href="ayuda.html" aria-current="page">Ayuda</a>: esta página.</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="titulo-encontrar">
+            <h2 id="titulo-encontrar">Cómo encontrar información</h2>
+
+            <ul>
+                <li><strong>Menú</strong>: en la parte superior de todas las páginas. En el móvil se despliega con el botón «Menú».</li>
+                <li><strong>Migas de pan</strong>: debajo de la cabecera, indican en qué página estás y te permiten volver al inicio.</li>
+                <li><strong>Buscador</strong>: escribe una o varias palabras (por ejemplo, «balonmano» o «formación») y pulsa Intro. No distingue mayúsculas ni tildes y tolera pequeñas erratas.</li>
+                <li><strong>Idioma</strong>: el enlace «English» de la cabecera abre la misma página en inglés.</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="titulo-faq">
+            <h2 id="titulo-faq">Preguntas frecuentes</h2>
+
+            <details>
+                <summary>¿Cómo cambio el idioma?</summary>
+                <p>
+                    Pulsa «English» en la cabecera. Cada página tiene su versión en inglés y el enlace
+                    te lleva directamente a la equivalente; desde ella, «Español» te devuelve aquí.
+                </p>
+            </details>
+
+            <details>
+                <summary>¿Puedo navegar solo con el teclado?</summary>
+                <p>
+                    Sí. Tab y Mayús+Tab avanzan y retroceden entre enlaces y controles, y el primer Tab
+                    muestra el enlace «Saltar al contenido principal». En el móvil, el botón «Menú» se
+                    abre con Intro o Espacio y se cierra con Escape. El elemento activo se resalta
+                    siempre con un borde naranja.
+                </p>
+            </details>
+
+            <details>
+                <summary>El audio o el vídeo no se reproducen, ¿qué hago?</summary>
+                <p>
+                    Comprueba el volumen y que tu navegador esté actualizado. Debajo de cada reproductor
+                    tienes un enlace para descargar el archivo y una descripción en texto de su contenido;
+                    el vídeo incluye además subtítulos en español y en inglés.
+                </p>
+            </details>
+
+            <details>
+                <summary>¿Cómo puedo contactar contigo?</summary>
+                <p>
+                    Escríbeme a <a href="mailto:iyansr97@gmail.com">iyansr97@gmail.com</a> o consulta todas las vías de
+                    contacto, incluidos LinkedIn y GitHub, en <a href="sobre-mi.html#contacto">Sobre mí</a>.
+                </p>
+            </details>
+
+            <details>
+                <summary>¿El sitio guarda datos sobre mí?</summary>
+                <p>
+                    No se usan cookies ni herramientas de analítica. El formulario de opinión no envía
+                    nada por sí solo: abre tu programa de correo con el mensaje preparado para que decidas
+                    si enviarlo. Únicamente durante las pruebas de usabilidad, y con el consentimiento de
+                    la persona participante, se registran en su propio navegador los clics y la zona de
+                    la pantalla a la que mira.
+                </p>
+            </details>
+        </section>
+
+        <section aria-labelledby="titulo-accesibilidad">
+            <h2 id="titulo-accesibilidad">Accesibilidad</h2>
+
+            <p>
+                El sitio está construido con HTML semántico y se puede usar con teclado y con lectores
+                de pantalla: todas las imágenes tienen texto alternativo, el audio tiene transcripción y
+                el vídeo tiene subtítulos y descripción. Respeta el tema oscuro del sistema y la
+                preferencia de reducir animaciones. Si encuentras alguna barrera, cuéntamela con el
+                formulario de abajo.
+            </p>
+        </section>
+
+        <section aria-labelledby="titulo-opinion">
+            <h2 id="titulo-opinion">Envíame tu opinión</h2>
+
+            <p>¿Has encontrado un error o tienes una sugerencia? Los campos marcados con * son obligatorios.</p>
+
+            <form id="form-opinion" action="mailto:iyansr97@gmail.com" method="post" enctype="text/plain">
+                <p>
+                    <label for="campo-nombre">Nombre</label>
+                    <input id="campo-nombre" name="nombre" type="text" autocomplete="name">
+                </p>
+
+                <p>
+                    <label for="campo-correo">Correo electrónico *</label>
+                    <input id="campo-correo" name="correo" type="email" autocomplete="email" required
+                           aria-describedby="ayuda-correo">
+                    <small id="ayuda-correo">Solo para poder responderte.</small>
+                </p>
+
+                <p>
+                    <label for="campo-tipo">Tipo de mensaje</label>
+                    <select id="campo-tipo" name="tipo">
+                        <option>Sugerencia</option>
+                        <option>Error en el sitio</option>
+                        <option>Problema de accesibilidad</option>
+                        <option>Otro</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="campo-mensaje">Mensaje *</label>
+                    <textarea id="campo-mensaje" name="mensaje" rows="5" required minlength="10"
+                              aria-describedby="ayuda-mensaje"></textarea>
+                    <small id="ayuda-mensaje">Mínimo 10 caracteres.</small>
+                </p>
+
+                <p><button type="submit">Enviar opinión</button></p>
+
+                <p id="estado-opinion" role="status"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto</strong>
+            <ul aria-label="Correo y redes sociales">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
+        </address>
+
+        <p>Última actualización: <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript. · <a href="ayuda.html">Ayuda y accesibilidad</a>
+        </p>
+    </footer>
+
+</body>
+</html>

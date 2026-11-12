@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Iyán Solís Rodríguez">
-    <meta name="description" content="Información personal de Iyán Solís Rodríguez: datos de contacto, fotografía, historia y formación.">
+    <meta name="description" content="Información personal de Iyán Solís Rodríguez: formación, experiencia laboral, proyectos, referencias y contacto.">
     <title>Sobre mí · Iyán Solís Rodríguez</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="sobre-mi.html">
+    <link rel="alternate" hreflang="en" href="en/about.html">
+    <link rel="alternate" hreflang="x-default" href="sobre-mi.html">
     <link rel="stylesheet" href="css/estilos.css">
     <script src="js/principal.js" defer></script>
+    <script src="js/usabilidad.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +22,9 @@
     <header>
         <p><a href="index.html">Iyán Solís</a></p>
 
-        <button id="btn-menu" type="button" aria-controls="navegacion">
+        <a href="en/about.html" hreflang="en" lang="en">English</a>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
             <span aria-hidden="true">☰</span> Menú
         </button>
 
@@ -32,14 +38,29 @@
                 <li><a href="deportes.html">Deportes</a></li>
                 <li><a href="videojuegos.html">Videojuegos</a></li>
                 <li><a href="tecnologia.html">Tecnología</a></li>
+                <li><a href="ayuda.html">Ayuda</a></li>
             </ul>
         </nav>
+
+        <form id="busqueda" role="search" action="buscar.html" aria-label="Buscador del sitio">
+            <label for="q-cabecera">Buscar en el sitio</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Buscar…" required>
+            <button type="submit">Buscar</button>
+        </form>
     </header>
 
     <main id="contenido">
 
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html" aria-current="page">Sobre mí</a></li>
+            </ol>
+        </nav>
+
         <header>
             <h1>Sobre mí</h1>
+            <p>Mis datos, formación, experiencia, proyectos y cómo contactar conmigo.</p>
         </header>
 
         <section aria-labelledby="titulo-datos">
@@ -58,14 +79,20 @@
                 <dt>Apellidos</dt>
                 <dd>Solís Rodríguez</dd>
 
-                <dt>Correo electrónico</dt>
-                <dd><a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a></dd>
-
-                <dt>Formación actual</dt>
-                <dd>Máster Universitario en Ingeniería Web</dd>
-
                 <dt>Ubicación</dt>
                 <dd>Luanco, Asturias (España)</dd>
+
+                <dt>Trabajo actual</dt>
+                <dd><a href="#titulo-experiencia">Mecalux</a></dd>
+
+                <dt>Estudios actuales</dt>
+                <dd>Máster Universitario en Ingeniería Web (Universidad de Oviedo)</dd>
+
+                <dt>Idiomas</dt>
+                <dd>Español (nativo) · Inglés (B2)</dd>
+
+                <dt>Correo electrónico</dt>
+                <dd><a href="mailto:iyansr97@gmail.com">iyansr97@gmail.com</a></dd>
             </dl>
         </section>
 
@@ -73,16 +100,16 @@
             <h2 id="titulo-historia">Un poco de historia</h2>
 
             <p>
-                Siempre me ha interesado cómo se construyen las cosas, y con la web
-                pasó lo mismo: empecé explorando HTML y CSS por mi cuenta y ahora
-                curso el Máster en Ingeniería Web para profundizar en estándares,
-                computación web y experiencia de usuario.
+                Siempre me ha interesado cómo se construyen las cosas, y con la web pasó lo mismo:
+                empecé explorando HTML y CSS por mi cuenta, estudié el Grado en Ingeniería
+                Informática del Software en la Universidad de Oviedo y ahora curso el Máster en
+                Ingeniería Web para profundizar en estándares, computación web y experiencia de usuario.
             </p>
 
             <p>
-                Además de la tecnología, dedico mi tiempo libre a la música, al cine,
-                a los videojuegos, al deporte y a viajar siempre que puedo. En este
-                sitio comparto un poco de todo eso.
+                En 2026 hice las prácticas en empresa en Mecalux, que es también mi puesto de trabajo
+                actual. Fuera de la tecnología dedico mi tiempo libre a la música, al cine, a los
+                videojuegos, al balonmano y a viajar siempre que puedo.
             </p>
         </section>
 
@@ -90,39 +117,105 @@
             <h2 id="titulo-formacion">Formación</h2>
 
             <table>
-                <caption>Resumen de mi formación académica</caption>
+                <caption>Formación académica</caption>
 
                 <thead>
                     <tr>
-                        <th scope="col">Etapa</th>
-                        <th scope="col">Institución</th>
+                        <th scope="col">Estudios</th>
+                        <th scope="col">Centro</th>
                         <th scope="col">Periodo</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td>Grado universitario</td>
-                        <td>Ámbito de ingeniería e informática</td>
-                        <td>Concluido</td>
+                        <td>Máster Universitario en Ingeniería Web</td>
+                        <td>Universidad de Oviedo</td>
+                        <td>2026 – 2027 (en curso)</td>
                     </tr>
 
                     <tr>
-                        <td>Máster Universitario en Ingeniería Web</td>
+                        <td>Grado en Ingeniería Informática del Software</td>
                         <td>Universidad de Oviedo</td>
-                        <td>2026 – 2027</td>
+                        <td>2022 – 2026</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bachillerato</td>
+                        <td>IES Cristo del Socorro</td>
+                        <td>2020 – 2022</td>
                     </tr>
                 </tbody>
             </table>
+        </section>
+
+        <section aria-labelledby="titulo-experiencia">
+            <h2 id="titulo-experiencia">Experiencia laboral</h2>
+
+            <article>
+                <h3>Mecalux</h3>
+                <p>Prácticas en empresa · <time datetime="2026">2026</time> – actualidad</p>
+                <p>
+                    Realicé las prácticas en empresa del grado en Mecalux en 2026 y es mi puesto de
+                    trabajo actual.
+                </p>
+            </article>
+        </section>
+
+        <section aria-labelledby="titulo-proyectos">
+            <h2 id="titulo-proyectos">Proyectos</h2>
+
+            <article>
+                <h3><span lang="en">GraphGenAi</span> · Trabajo Fin de Grado</h3>
+                <p><time datetime="2026">2026</time> · Python · Neo4j · NetGAN</p>
+                <p>
+                    Herramienta para generar grafos sintéticos a partir de grafos reales almacenados en
+                    Neo4j. Aprende la topología, los tipos y los atributos del grafo original mediante
+                    una variante de NetGAN (una red generativa antagónica para grafos) y genera un grafo
+                    sintético que se puede evaluar y exportar de nuevo a Neo4j.
+                </p>
+                <p><a href="https://github.com/Iyansr97/GraphGenAi">Código de <span lang="en">GraphGenAi</span> en GitHub</a></p>
+            </article>
+        </section>
+
+        <section aria-labelledby="titulo-referencias">
+            <h2 id="titulo-referencias">Referencias</h2>
+
+            <p>Personas que pueden avalar mi trabajo, tutores de mis prácticas en empresa:</p>
+
+            <ul>
+                <li>
+                    <strong>Cristian González García</strong>, tutor de prácticas (Universidad de Oviedo) ·
+                    <a href="mailto:gonzalezcristian@uniovi.es">gonzalezcristian@uniovi.es</a>
+                </li>
+                <li>
+                    <strong>Diego Martín Fernández</strong>, tutor de prácticas (Universidad de Oviedo) ·
+                    <a href="mailto:martinfdiego@uniovi.es">martinfdiego@uniovi.es</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contacto" aria-labelledby="titulo-contacto">
+            <h2 id="titulo-contacto">Contacto</h2>
+
+            <ul>
+                <li>Correo personal: <a href="mailto:iyansr97@gmail.com">iyansr97@gmail.com</a></li>
+                <li>Correo de la universidad: <a href="mailto:UO295103@uniovi.es">UO295103@uniovi.es</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/">Iyán Solís Rodríguez</a></li>
+                <li>GitHub: <a href="https://github.com/Iyansr97">Iyansr97</a></li>
+            </ul>
+
+            <p>¿Tienes alguna sugerencia sobre esta web? Usa el <a href="ayuda.html#titulo-opinion">formulario de opinión</a>.</p>
         </section>
 
         <aside aria-labelledby="titulo-breve">
             <h2 id="titulo-breve">En pocas palabras</h2>
 
             <ul>
+                <li>Graduado en Ingeniería Informática del Software.</li>
+                <li>Trabajo en Mecalux y curso el Máster en Ingeniería Web.</li>
                 <li>Curioso y autodidacta.</li>
-                <li>Aficionado a la música, el cine, los viajes y los videojuegos.</li>
-                <li>Estudiante del Máster en Ingeniería Web.</li>
+                <li>Aficionado a la música, el cine, los viajes, el balonmano y los videojuegos.</li>
             </ul>
         </aside>
 
@@ -130,13 +223,20 @@
 
     <footer>
         <address>
-            <strong>Contacto:</strong>
-            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+            <strong>Contacto</strong>
+            <ul aria-label="Correo y redes sociales">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
         </address>
+
+        <p>Última actualización: <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
 
         <p>
             © <time id="anio">2026</time> Iyán Solís Rodríguez ·
-            Sitio web personal con HTML5, CSS3 y JavaScript.
+            Sitio web personal con HTML5, CSS3 y JavaScript. · <a href="ayuda.html">Ayuda y accesibilidad</a>
         </p>
     </footer>
 

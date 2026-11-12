@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Iyán Solís Rodríguez">
-    <meta name="description" content="Destino favorito de Iyán Solís Rodríguez: Egipto, y vídeo de viaje.">
+    <meta name="description" content="Destino favorito de Iyán Solís Rodríguez: Egipto, la ruta que le gustaría hacer y un vídeo de viaje.">
     <title>Viajes · Iyán Solís Rodríguez</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="viajes.html">
+    <link rel="alternate" hreflang="en" href="en/travel.html">
+    <link rel="alternate" hreflang="x-default" href="viajes.html">
     <link rel="stylesheet" href="css/estilos.css">
     <script src="js/principal.js" defer></script>
+    <script src="js/usabilidad.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +22,9 @@
     <header>
         <p><a href="index.html">Iyán Solís</a></p>
 
-        <button id="btn-menu" type="button" aria-controls="navegacion">
+        <a href="en/travel.html" hreflang="en" lang="en">English</a>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
             <span aria-hidden="true">☰</span> Menú
         </button>
 
@@ -32,27 +38,40 @@
                 <li><a href="deportes.html">Deportes</a></li>
                 <li><a href="videojuegos.html">Videojuegos</a></li>
                 <li><a href="tecnologia.html">Tecnología</a></li>
+                <li><a href="ayuda.html">Ayuda</a></li>
             </ul>
         </nav>
+
+        <form id="busqueda" role="search" action="buscar.html" aria-label="Buscador del sitio">
+            <label for="q-cabecera">Buscar en el sitio</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Buscar…" required>
+            <button type="submit">Buscar</button>
+        </form>
     </header>
 
     <main id="contenido">
 
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="viajes.html" aria-current="page">Viajes</a></li>
+            </ol>
+        </nav>
+
         <header>
             <h1>Viajes</h1>
+            <p>El destino que más quiero conocer y cómo me gustaría recorrerlo.</p>
         </header>
 
         <article>
             <header>
-                <h2>Egipto</h2>
+                <h2 id="titulo-egipto">Egipto</h2>
             </header>
 
             <figure>
                 <img src="media/viaje-egipto.jpg" width="654" height="468"
                      alt="Paisaje de Egipto con las pirámides">
-                <figcaption>
-                    Las pirámides de Egipto, uno de los destinos que más me impresionan.
-                </figcaption>
+                <figcaption>Las pirámides de Egipto, uno de los destinos que más me impresionan.</figcaption>
             </figure>
 
             <p>
@@ -66,6 +85,19 @@
                 el río y esa sensación de estar ante civilizaciones que construyeron
                 monumentos que siguen en pie cinco mil años después.
             </p>
+
+            <h3 id="titulo-ruta">La ruta que me gustaría hacer</h3>
+
+            <ol>
+                <li><strong>El Cairo</strong>: las pirámides de Giza, la Esfinge y el Gran Museo Egipcio.</li>
+                <li><strong>Luxor</strong>: los templos de Luxor y Karnak y el Valle de los Reyes.</li>
+                <li><strong>Crucero por el Nilo</strong> desde Luxor hasta Asuán.</li>
+                <li><strong>Abu Simbel</strong>: los templos de Ramsés II y Nefertari.</li>
+            </ol>
+
+            <p>
+                La mejor época para ir es entre octubre y abril, cuando el calor es más llevadero.
+            </p>
         </article>
 
         <section aria-labelledby="titulo-video">
@@ -74,6 +106,8 @@
             <figure>
                 <video controls preload="metadata" poster="media/viaje-egipto.jpg">
                     <source src="media/video-viajes.mp4" type="video/mp4">
+                    <track kind="captions" src="media/video-viajes.es.vtt" srclang="es" label="Español" default>
+                    <track kind="captions" src="media/video-viajes.en.vtt" srclang="en" label="English">
                     <p>
                         Tu navegador no soporta el elemento <code>video</code>.
                         Puedes descargar el vídeo:
@@ -81,21 +115,41 @@
                     </p>
                 </video>
 
-                <figcaption>Vídeo de viaje (archivo de vídeo de ejemplo).</figcaption>
+                <figcaption>
+                    Vídeo de viaje (archivo de vídeo de ejemplo, 8 segundos, con subtítulos).
+                    <a href="media/video-viajes.mp4" download>Descargar el vídeo</a>.
+                </figcaption>
             </figure>
+
+            <details>
+                <summary>Descripción del vídeo</summary>
+                <p>
+                    Es un vídeo de ejemplo de 8 segundos que ocupa el lugar de un vídeo real de viaje:
+                    muestra una carta de ajuste con barras verticales de colores, una franja diagonal en
+                    degradado y un contador de tiempo en la esquina superior izquierda, acompañada de un
+                    tono de prueba. No tiene narración.
+                </p>
+            </details>
         </section>
 
     </main>
 
     <footer>
         <address>
-            <strong>Contacto:</strong>
-            <a href="mailto:UO295103@uniovi.com">UO295103@uniovi.com</a>
+            <strong>Contacto</strong>
+            <ul aria-label="Correo y redes sociales">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
         </address>
+
+        <p>Última actualización: <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
 
         <p>
             © <time id="anio">2026</time> Iyán Solís Rodríguez ·
-            Sitio web personal con HTML5, CSS3 y JavaScript.
+            Sitio web personal con HTML5, CSS3 y JavaScript. · <a href="ayuda.html">Ayuda y accesibilidad</a>
         </p>
     </footer>
 

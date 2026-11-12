@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Visor de pruebas de usabilidad</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --fondo: #f3f6fb; --superficie: #fff; --texto: #1d2433; --suave: #5b6578;
+            --borde: #d5deeb; --acento: #1a4fa8;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font: 15px/1.5 system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+               color: var(--texto); background: var(--fondo); }
+        header, main { max-width: 1400px; margin: 0 auto; padding: 16px; }
+        h1 { font-size: 22px; margin: 8px 0 4px; }
+        h2 { font-size: 17px; margin: 0 0 10px; }
+        p { margin: 0 0 8px; color: var(--suave); }
+        section { background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px;
+                  padding: 16px; margin-bottom: 16px; }
+        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+        th { color: var(--suave); font-weight: 600; }
+        td.num { font-variant-numeric: tabular-nums; text-align: right; }
+        .scroll { overflow-x: auto; }
+        .controles { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; }
+        label { display: grid; gap: 4px; font-size: 13px; color: var(--suave); }
+        select, input[type=file] { font: inherit; padding: 6px 8px; border: 1px solid var(--borde);
+                                   border-radius: 8px; background: #fff; color: var(--texto); }
+        .soltar { border: 2px dashed var(--borde); border-radius: 12px; padding: 16px; text-align: center; }
+        .soltar.activo { border-color: var(--acento); background: #eef5ff; }
+        .escenario-externo { position: relative; overflow: hidden; border: 1px solid var(--borde);
+                             border-radius: 8px; background: #fff; }
+        .escenario { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+        .escenario iframe { border: 0; display: block; pointer-events: none; background: #fff; }
+        .escenario canvas { position: absolute; inset: 0; pointer-events: none; }
+        .leyenda { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--suave); margin: 8px 0; }
+        .rampa { display: inline-block; width: 120px; height: 10px; border-radius: 5px; vertical-align: middle;
+                 background: linear-gradient(90deg, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000); }
+        .estado-completada { color: #1e7e34; font-weight: 600; }
+        .estado-abandonada { color: #b3261e; font-weight: 600; }
+        .vacio { color: var(--suave); font-style: italic; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visor de pruebas de usabilidad · Tanda 2</h1>
+        <p>Carga los ficheros JSON descargados al final de cada prueba. Se dibujan los mapas de calor
+           (mirada y clics/toques) y el recorrido ocular sobre cada página, al ancho de pantalla del usuario.</p>
+    </header>
+
+    <main>
+        <section>
+            <div class="soltar" data-soltar>
+                <label>Ficheros de resultados (.json)
+                    <input type="file" accept="application/json,.json" multiple data-ficheros>
+                </label>
+                <p>…o arrástralos aquí.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Resumen de las sesiones</h2>
+            <div class="scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th><th>Dispositivo</th><th>Estado</th><th>Tiempo (s)</th>
+                            <th>Respuesta</th><th>Recorrido</th><th>Clics</th><th>Muestras mirada</th>
+                            <th>Seg. ocular</th>
+                        </tr>
+                    </thead>
+                    <tbody data-resumen><tr><td colspan="9" class="vacio">Sin datos cargados.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mapa de calor y recorrido ocular</h2>
+            <div class="controles">
+                <label>Usuario <select data-sel-sesion></select></label>
+                <label>Página <select data-sel-pagina></select></label>
+                <label>Capa
+                    <select data-sel-capa>
+                        <option value="mirada">Mapa de calor de la mirada</option>
+                        <option value="recorrido">Recorrido ocular (fijaciones)</option>
+                        <option value="clics">Mapa de calor de clics / toques</option>
+                        <option value="todo">Mirada + recorrido + clics</option>
+                    </select>
+                </label>
+                <label>Opacidad <input type="range" min="20" max="100" value="75" data-opacidad></label>
+                <label>Escala
+                    <select data-sel-escala>
+                        <option value="ajustar">Ajustar al ancho</option>
+                        <option value="1">100 %</option>
+                    </select>
+                </label>
+            </div>
+            <div class="leyenda">
+                <span>Intensidad: baja <i class="rampa"></i> alta</span>
+                <span>Recorrido: círculos numerados = fijaciones (tamaño ∝ duración)</span>
+                <span>Clics: ✕ numerados en orden</span>
+            </div>
+            <p data-info></p>
+            <div class="escenario-externo" data-externo>
+                <div class="escenario" data-escenario>
+                    <iframe title="Página analizada" data-marco scrolling="no"></iframe>
+                    <canvas data-lienzo></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="visor.js"></script>
+</body>
+</html>

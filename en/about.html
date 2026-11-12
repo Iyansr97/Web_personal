@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Personal information about Iyán Solís Rodríguez: education, work experience, projects, references and contact.">
+    <title>About me · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="../sobre-mi.html">
+    <link rel="alternate" hreflang="en" href="about.html">
+    <link rel="alternate" hreflang="x-default" href="../sobre-mi.html">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../js/principal.js" defer></script>
+    <script src="../js/usabilidad.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Skip to main content</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <a href="../sobre-mi.html" hreflang="es" lang="es">Español</a>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
+            <span aria-hidden="true">☰</span> Menu
+        </button>
+
+        <nav id="navegacion" aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" aria-current="page">About me</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="film-tv.html">Film and TV</a></li>
+                <li><a href="travel.html">Travel</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="video-games.html">Video games</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </nav>
+
+        <form id="busqueda" role="search" action="search.html" aria-label="Site search">
+            <label for="q-cabecera">Search this site</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Search…" required>
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main id="contenido">
+
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" aria-current="page">About me</a></li>
+            </ol>
+        </nav>
+
+        <header>
+            <h1>About me</h1>
+            <p>My details, education, experience, projects and how to get in touch.</p>
+        </header>
+
+        <section aria-labelledby="titulo-datos">
+            <h2 id="titulo-datos">Personal details</h2>
+
+            <figure>
+                <img src="../media/foto-personal.jpg" width="1000" height="800"
+                     alt="Personal photograph of Iyán Solís Rodríguez">
+                <figcaption>Personal photograph</figcaption>
+            </figure>
+
+            <dl>
+                <dt>First name</dt>
+                <dd>Iyán</dd>
+
+                <dt>Surnames</dt>
+                <dd>Solís Rodríguez</dd>
+
+                <dt>Location</dt>
+                <dd>Luanco, Asturias (Spain)</dd>
+
+                <dt>Current job</dt>
+                <dd><a href="#titulo-experiencia">Mecalux</a></dd>
+
+                <dt>Current studies</dt>
+                <dd>Master’s Degree in Web Engineering (University of Oviedo)</dd>
+
+                <dt>Languages</dt>
+                <dd>Spanish (native) · English (B2)</dd>
+
+                <dt>Email</dt>
+                <dd><a href="mailto:iyansr97@gmail.com">iyansr97@gmail.com</a></dd>
+            </dl>
+        </section>
+
+        <section aria-labelledby="titulo-historia">
+            <h2 id="titulo-historia">A bit of history</h2>
+
+            <p>
+                I have always been curious about how things are built, and the web was no exception:
+                I started exploring HTML and CSS on my own, studied a Degree in Software Engineering
+                at the University of Oviedo and I am now taking the Master’s in Web Engineering to
+                go deeper into web standards, web computing and user experience.
+            </p>
+
+            <p>
+                In 2026 I did my work placement at Mecalux, which is also my current job. Outside
+                technology, I spend my free time on music, films, video games, handball and travelling
+                whenever I can.
+            </p>
+        </section>
+
+        <section aria-labelledby="titulo-formacion">
+            <h2 id="titulo-formacion">Education</h2>
+
+            <table>
+                <caption>Academic background</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Studies</th>
+                        <th scope="col">Institution</th>
+                        <th scope="col">Period</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Master’s Degree in Web Engineering</td>
+                        <td>University of Oviedo</td>
+                        <td>2026 – 2027 (in progress)</td>
+                    </tr>
+
+                    <tr>
+                        <td>Degree in Software Engineering</td>
+                        <td>University of Oviedo</td>
+                        <td>2022 – 2026</td>
+                    </tr>
+
+                    <tr>
+                        <td>Spanish Baccalaureate (<span lang="es">Bachillerato</span>)</td>
+                        <td><span lang="es">IES Cristo del Socorro</span></td>
+                        <td>2020 – 2022</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section aria-labelledby="titulo-experiencia">
+            <h2 id="titulo-experiencia">Work experience</h2>
+
+            <article>
+                <h3>Mecalux</h3>
+                <p>Work placement · <time datetime="2026">2026</time> – present</p>
+                <p>
+                    I did my degree work placement at Mecalux in 2026 and it is my current job.
+                </p>
+            </article>
+        </section>
+
+        <section aria-labelledby="titulo-proyectos">
+            <h2 id="titulo-proyectos">Projects</h2>
+
+            <article>
+                <h3>GraphGenAi · Bachelor’s Thesis</h3>
+                <p><time datetime="2026">2026</time> · Python · Neo4j · NetGAN</p>
+                <p>
+                    A tool that generates synthetic graphs from real graphs stored in Neo4j. It learns
+                    the topology, types and attributes of the original graph using a variant of NetGAN
+                    (a generative adversarial network for graphs) and produces a synthetic graph that can
+                    be evaluated and exported back to Neo4j.
+                </p>
+                <p><a href="https://github.com/Iyansr97/GraphGenAi">GraphGenAi source code on GitHub</a></p>
+            </article>
+        </section>
+
+        <section aria-labelledby="titulo-referencias">
+            <h2 id="titulo-referencias">References</h2>
+
+            <p>People who can vouch for my work, the supervisors of my work placement:</p>
+
+            <ul>
+                <li>
+                    <strong>Cristian González García</strong>, placement supervisor (University of Oviedo) ·
+                    <a href="mailto:gonzalezcristian@uniovi.es">gonzalezcristian@uniovi.es</a>
+                </li>
+                <li>
+                    <strong>Diego Martín Fernández</strong>, placement supervisor (University of Oviedo) ·
+                    <a href="mailto:martinfdiego@uniovi.es">martinfdiego@uniovi.es</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contacto" aria-labelledby="titulo-contacto">
+            <h2 id="titulo-contacto">Contact</h2>
+
+            <ul>
+                <li>Personal email: <a href="mailto:iyansr97@gmail.com">iyansr97@gmail.com</a></li>
+                <li>University email: <a href="mailto:UO295103@uniovi.es">UO295103@uniovi.es</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/">Iyán Solís Rodríguez</a></li>
+                <li>GitHub: <a href="https://github.com/Iyansr97">Iyansr97</a></li>
+            </ul>
+
+            <p>Any suggestions about this website? Use the <a href="help.html#titulo-opinion">feedback form</a>.</p>
+        </section>
+
+        <aside aria-labelledby="titulo-breve">
+            <h2 id="titulo-breve">In a nutshell</h2>
+
+            <ul>
+                <li>Graduate in Software Engineering.</li>
+                <li>I work at Mecalux and study the Master’s in Web Engineering.</li>
+                <li>Curious and self-taught.</li>
+                <li>Into music, films, travel, handball and video games.</li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contact</strong>
+            <ul aria-label="Email and social networks">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
+        </address>
+
+        <p>Last updated: <time datetime="2026-11-12">12 November 2026</time></p>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Personal website built with HTML5, CSS3 and JavaScript. · <a href="help.html">Help and accessibility</a>
+        </p>
+    </footer>
+
+</body>
+</html>
