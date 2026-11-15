@@ -11,10 +11,14 @@
 
 (() => {
   const indiceTotal = window.INDICE_BUSQUEDA;
-  const lista = document.getElementById('resultados');
   const resumen = document.getElementById('resumen-busqueda');
   const entrada = document.getElementById('q-pagina');
-  if (!indiceTotal || !lista || !resumen || !entrada) return;
+  if (!indiceTotal || !resumen || !entrada) return;
+  /* La lista de resultados se crea aquí y no en el HTML: una lista vacía en el
+     código fuente es un fallo de accesibilidad (WCAG 1.3.1, detectado por TAW). */
+  const lista = document.createElement('ol');
+  lista.id = 'resultados';
+  resumen.after(lista);
 
   const L = document.documentElement.lang === 'en' ? 'en' : 'es';
   const prefijo = L === 'en' ? '../' : '';

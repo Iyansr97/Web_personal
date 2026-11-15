@@ -133,8 +133,8 @@ body > header {
     gap: .5rem 1rem;
     padding: .6rem max(1rem, (100% - 75rem) / 2);
     color: #fff;
-    background: color-mix(in srgb, var(--oscuro) 94%, transparent);
-    backdrop-filter: blur(12px);
+    /* Fondo opaco: con transparencia las herramientas de accesibilidad no pueden calcular el contraste */
+    background: var(--oscuro);
 }
 
 body > header a { color: #fff; text-decoration: none; }
@@ -351,6 +351,8 @@ main > article, main > section, main > aside {
 }
 
 main > aside { background: var(--suave); border-color: transparent; box-shadow: none; }
+/* Enlaces sobre el fondo azul claro: color más oscuro para un contraste de 8,75:1 (AAA exige 7:1) */
+main > aside a { color: var(--titulo); }
 
 main > * > h2:first-child, main > * > header h2 { margin-top: 0; }
 
