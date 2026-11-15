@@ -374,6 +374,10 @@ main section > article > p:last-child { margin-bottom: 0; }
 
 main li + li { margin-top: .35rem; }
 
+/* WCAG 1.4.8 (AAA): líneas de texto de 80 caracteres como máximo */
+main section > p, main article > p, main aside > p, main details > p,
+main section > ul > li, main article > ul > li, main aside > ul > li, main section > ol > li, main article > ol > li { max-width: 75ch; }
+
 /* TARJETAS DEL INICIO */
 
 ul:has(> li > article) {
@@ -496,10 +500,6 @@ main form p[role="status"]:not(:empty) {
     border-radius: .6rem;
 }
 
-/* Buscador: campo y botón unidos en la misma línea */
-main form[role="search"] > p { display: flex; }
-main form[role="search"] input { border-right: 0; border-radius: .6rem 0 0 .6rem; }
-main form[role="search"] button { flex: none; border-radius: 0 .6rem .6rem 0; }
 
 /* Resultados de búsqueda */
 main ol:has(> li > h3) { margin: 0; padding: 0; list-style: none; }

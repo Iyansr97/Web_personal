@@ -10,11 +10,11 @@
     <link rel="alternate" hreflang="es" href="buscar.html">
     <link rel="alternate" hreflang="en" href="en/search.html">
     <link rel="alternate" hreflang="x-default" href="buscar.html">
-    <link rel="stylesheet" href="css/estilos.css?v=mwi3gbn0">
-    <script src="js/principal.js?v=mwi3gbn0" defer></script>
-    <script src="js/indice-busqueda.js?v=mwi3gbn0" defer></script>
-    <script src="js/buscador.js?v=mwi3gbn0" defer></script>
-    <script src="js/usabilidad.js?v=mwi3gbn0" defer></script>
+    <link rel="stylesheet" href="css/estilos.css?v=mwi4ncf1">
+    <script src="js/principal.js?v=mwi4ncf1" defer></script>
+    <script src="js/indice-busqueda.js?v=mwi4ncf1" defer></script>
+    <script src="js/buscador.js?v=mwi4ncf1" defer></script>
+    <script src="js/usabilidad.js?v=mwi4ncf1" defer></script>
 </head>
 
 <body>
@@ -71,26 +71,25 @@
             <p>Busca en todo el contenido del sitio: aficiones, formación, proyectos, contacto…</p>
         </header>
 
-        <section aria-labelledby="titulo-resultados">
-            <form id="form-busqueda" role="search" action="buscar.html" aria-label="Buscar en los resultados">
-                <label for="q-pagina">¿Qué quieres encontrar?</label>
+        <section aria-labelledby="titulo-buscador">
+            <h2 id="titulo-buscador">¿Qué quieres encontrar?</h2>
+
+            <form id="form-busqueda" role="search" action="buscar.html" aria-labelledby="titulo-buscador">
                 <p>
+                    <label for="q-pagina">Palabras que buscas</label>
                     <input id="q-pagina" type="search" name="q" required>
-                    <button type="submit">Buscar</button>
                 </p>
+
+                <p><button type="submit">Buscar</button></p>
             </form>
 
+            <p>Si prefieres explorar, consulta el <a href="ayuda.html#titulo-mapa">mapa del sitio</a>.</p>
+        </section>
+
+        <section aria-labelledby="titulo-resultados">
             <h2 id="titulo-resultados">Resultados</h2>
 
             <p id="resumen-busqueda" role="status">Escribe una o varias palabras y pulsa «Buscar».</p>
-
-
-            <noscript>
-                <p>
-                    El buscador necesita JavaScript. Puedes encontrar todas las páginas en el
-                    <a href="ayuda.html#titulo-mapa">mapa del sitio</a>.
-                </p>
-            </noscript>
         </section>
 
     </main>
