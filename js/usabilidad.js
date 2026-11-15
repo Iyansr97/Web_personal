@@ -96,8 +96,9 @@
               background: rgba(8, 26, 63, .82); padding: 16px; }
       .capa[hidden], .barra[hidden], .punto[hidden] { display: none; }
       /* Paso «Coloca la cara»: la imagen de la cámara va en el centro y el panel abajo */
-      .capa[data-vista="posicion"] { place-items: end center; background: rgba(8, 26, 63, .9); }
-      .capa[data-vista="posicion"] .panel { max-width: 640px; padding: 16px 24px; }
+      .capa[data-vista="posicion"] { place-items: start center; overflow-y: auto; background: rgba(8, 26, 63, .95); }
+      .capa[data-vista="posicion"] .panel { max-width: 560px; padding: 16px 20px; font-size: 16px; }
+      .capa[data-vista="posicion"] .panel h2 { font-size: 20px; margin-bottom: 8px; }
       .panel { background: #fff; color: #1d2433; border-radius: 16px; padding: 24px; max-width: 520px;
                width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,.35); font-size: 17px; line-height: 1.5; }
       .panel h2 { margin: 0 0 12px; font-size: 22px; color: #123a7a; }
@@ -112,8 +113,10 @@
       input { font: inherit; width: 100%; padding: 10px 12px; border: 2px solid #cfe0fa; border-radius: 10px; }
       .aviso { font-size: 14px; color: #6a4b00; background: #fff4d6; padding: 8px 10px; border-radius: 8px; }
       .calibracion { position: fixed; inset: 0; z-index: 2147483646; background: rgba(255,255,255,.96); }
-      .calibracion p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0;
-                       max-width: 80vw; text-align: center; color: #1d2433; font-size: 17px; }
+      /* Entre la fila superior (10 %) y la central (50 %) de puntos: no tapa ninguno */
+      .calibracion p { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); margin: 0;
+                       max-width: 70vw; text-align: center; color: #1d2433; font-size: 17px; font-weight: 600;
+                       background: #eef5ff; padding: 8px 14px; border-radius: 10px; }
       .punto { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%;
                padding: 0; background: #d93025; box-shadow: 0 0 0 4px rgba(217,48,37,.25); }
       .punto.hecho { background: #1e8e3e; box-shadow: none; }
@@ -352,14 +355,31 @@
      - true  → en el centro y más grande (paso «Coloca la cara»)
      - false → oculta (calibración y prueba), para que no tape nada; la cámara sigue funcionando.
      Se escala el contenedor entero para que el vídeo y el recuadro de la cara sigan alineados. */
+  /* WebGazer vuelve a mostrar su vista previa al iniciarse en cada página. Esta regla la oculta
+     siempre salvo cuando <html> lleva data-ux-camara (solo en el paso «Coloca la cara»).
+     display:none no detiene la cámara: WebGazer sigue leyendo los fotogramas. */
+  const estiloCamara = document.createElement('style');
+  estiloCamara.textContent = `
+    html:not([data-ux-camara]) #webgazerVideoContainer,
+    html:not([data-ux-camara]) #webgazerVideoFeed,
+    html:not([data-ux-camara]) #webgazerFaceOverlay,
+    html:not([data-ux-camara]) #webgazerFaceFeedbackBox,
+    #webgazerGazeDot { display: none !important; }`;
+  document.head.appendChild(estiloCamara);
+
+  const MARGEN_VIDEO = 16;
   const centrarVideo = (centrado) => {
     const video = document.getElementById('webgazerVideoContainer');
+    if (!centrado) { delete document.documentElement.dataset.uxCamara; return; }
+    document.documentElement.dataset.uxCamara = '';
     if (!video) return;
-    const escala = Math.min(2, (innerWidth * 0.9) / 320, (innerHeight * 0.55) / 240);
-    Object.assign(video.style, centrado
-      ? { visibility: 'visible', top: '38%', left: '50%', transformOrigin: 'center',
-          transform: `translate(-50%, -50%) scale(${escala})`, boxShadow: '0 0 0 4px #fff' }
-      : { visibility: 'hidden', top: '0px', left: '0px', transform: 'none', boxShadow: 'none' });
+    /* Imagen arriba y centrada; el panel de instrucciones se coloca justo debajo */
+    const escala = Math.max(1, Math.min(1.8, (innerWidth * 0.9) / 320, (innerHeight * 0.45) / 240));
+    Object.assign(video.style, {
+      top: `${MARGEN_VIDEO}px`, left: '50%', transformOrigin: 'top center',
+      transform: `translateX(-50%) scale(${escala})`, boxShadow: '0 0 0 3px #fff', borderRadius: '6px'
+    });
+    $('[data-vista="posicion"] .panel').style.marginTop = `${Math.round(240 * escala) + MARGEN_VIDEO * 2}px`;
   };
 
   let ultimaMirada = 0;
