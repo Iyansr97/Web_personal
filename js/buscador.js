@@ -14,11 +14,10 @@
   const resumen = document.getElementById('resumen-busqueda');
   const entrada = document.getElementById('q-pagina');
   if (!indiceTotal || !resumen || !entrada) return;
-  /* La lista de resultados se crea aquí y no en el HTML: una lista vacía en el
-     código fuente es un fallo de accesibilidad (WCAG 1.3.1, detectado por TAW). */
+  /* La lista de resultados solo se añade a la página cuando hay resultados: una lista
+     vacía es un fallo de accesibilidad (WCAG 1.3.1, detectado por TAW, que ejecuta el JavaScript). */
   const lista = document.createElement('ol');
   lista.id = 'resultados';
-  resumen.after(lista);
 
   const L = document.documentElement.lang === 'en' ? 'en' : 'es';
   const prefijo = L === 'en' ? '../' : '';
@@ -164,6 +163,7 @@
 
   const pintar = (consulta) => {
     lista.replaceChildren();
+    lista.remove();   // la lista solo está en la página cuando hay resultados (WCAG 1.3.1: sin listas vacías)
     if (!consulta.trim()) { resumen.textContent = TXT.vacio; return; }
     document.title = TXT.titulo(consulta);
 
@@ -186,6 +186,7 @@
     }
 
     const n = resultados.length;
+    resumen.after(lista);
     resumen.textContent = completos ? (n === 1 ? TXT.uno(consulta) : TXT.varios(n, consulta)) : TXT.parcial(n, consulta);
 
     for (const { d, formas } of resultados) {
