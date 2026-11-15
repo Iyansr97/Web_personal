@@ -4,7 +4,8 @@
  *  Solo se activa en "modo prueba". Para empezar una prueba basta con abrir:
  *      prueba.html     → genera un código de usuario único, detecta el
  *                        dispositivo (escritorio|tableta|telefono) y empieza.
- *  También se puede forzar un código: index.html?usuario=U01&dispositivo=tableta
+ *  La prueba solo existe en esa pestaña: abrir la web en otra pestaña, o cerrar
+ *  la pestaña, la deja como un sitio normal.
  *  Para recuperar los datos de la última prueba en ese navegador:
  *      index.html?prueba=descargar
  *
@@ -34,9 +35,15 @@
   const CLICS_POR_PUNTO = 5;
 
   const params = new URLSearchParams(location.search);
-  const leer = (k) => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } };
-  const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* lleno o bloqueado */ } };
-  const borrar = (k) => { try { localStorage.removeItem(k); } catch { /* nada */ } };
+  /* La prueba en curso vive en sessionStorage: solo existe en la pestaña donde se abrió prueba.html
+     y desaparece al cerrarla, así que la web normal nunca muestra la prueba.
+     Los resultados terminados van a localStorage para poder descargarlos más tarde. */
+  const almacen = (k) => (k === CLAVE ? sessionStorage : localStorage);
+  const leer = (k) => { try { return JSON.parse(almacen(k).getItem(k)); } catch { return null; } };
+  const guardar = (k, v) => { try { almacen(k).setItem(k, JSON.stringify(v)); } catch { /* lleno o bloqueado */ } };
+  const borrar = (k) => { try { almacen(k).removeItem(k); } catch { /* nada */ } };
+  /* Versiones anteriores guardaban la prueba en curso en localStorage: se elimina */
+  try { localStorage.removeItem(CLAVE); } catch { /* nada */ }
 
   const detectarDispositivo = () => {
     const ancho = Math.min(screen.width, screen.height);
@@ -56,7 +63,7 @@
   /* ---------- Sesión ---------- */
   let sesion = leer(CLAVE);
   const nueva = params.get('prueba') === 'nueva';      // viene de prueba.html
-  const usuarioParam = nueva ? generarCodigo() : params.get('usuario');
+  const usuarioParam = nueva ? generarCodigo() : null;   // solo se empieza desde prueba.html
   /* Quita los parámetros de la URL: si el usuario recarga, sigue la misma sesión */
   if (nueva || usuarioParam) history.replaceState(null, '', location.pathname + location.hash);
 

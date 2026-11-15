@@ -166,11 +166,11 @@
 
     const capa = el.selCapa.value;
     const fij = fijaciones(g.mirada);
-    if (capa === 'mirada' || capa === 'todo') mapaCalor(ctx, ancho, alto, g.mirada, 55, 0.08);
+    if (capa === 'mirada' || capa === 'calor' || capa === 'todo') mapaCalor(ctx, ancho, alto, g.mirada, 55, 0.08);
     if (capa === 'clics') mapaCalor(ctx, ancho, alto, g.clics, 35, 0.35);
     ctx.globalAlpha = 1;
     if (capa === 'recorrido' || capa === 'todo') recorrido(ctx, fij);
-    if (capa === 'clics' || capa === 'todo') marcarClics(ctx, g.clics);
+    if (capa === 'clics' || capa === 'calor' || capa === 'todo') marcarClics(ctx, g.clics);
 
     const durTotal = fij.reduce((n, f) => n + f.dur, 0);
     el.info.textContent = `${s.usuario} · ${s.dispositivo} · ${g.url} · ventana ${g.ventana.ancho}×${g.ventana.alto} px · ` +
