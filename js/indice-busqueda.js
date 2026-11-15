@@ -9,7 +9,7 @@ window.INDICE_BUSQUEDA = {
    "url": "index.html",
    "pagina": "Hola, soy Iyán Solís Rodríguez",
    "apartado": "",
-   "texto": "Graduado en Ingeniería Informática del Software, trabajo en Mecalux y estudio el Máster Universitario en Ingeniería Web en la Universidad de Oviedo. Este es mi sitio web personal: aquí cuento quién soy, mi formación, mi experiencia y mis proyectos, y comparto mis aficiones: la música, el cine, los viajes, el balonmano, los videojuegos y la tecnología."
+   "texto": "Graduado en Ingeniería Informática del Software, trabajo en Mecalux y estudio el Máster Universitario en Ingeniería Web. Este es mi sitio web personal: aquí cuento quién soy, mi formación, mi experiencia y mis proyectos, y comparto mis aficiones: la música, el cine, los viajes, el balonmano, los videojuegos y la tecnología."
   },
   {
    "url": "sobre-mi.html",
@@ -233,7 +233,7 @@ window.INDICE_BUSQUEDA = {
    "url": "en/index.html",
    "pagina": "Hi, I’m Iyán Solís Rodríguez",
    "apartado": "",
-   "texto": "I hold a degree in Software Engineering, I work at Mecalux and I’m studying the Master’s Degree in Web Engineering at the University of Oviedo. This is my personal website: here I tell you who I am, my education, my experience and my projects, and I share my hobbies: music, films, travel, handball, video games and technology."
+   "texto": "I hold a degree in Software Engineering, I work at Mecalux and I’m studying the Master’s Degree in Web Engineering. This is my personal website: here I tell you who I am, my education, my experience and my projects, and I share my hobbies: music, films, travel, handball, video games and technology."
   },
   {
    "url": "en/about.html",

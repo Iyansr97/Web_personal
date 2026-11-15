@@ -12,7 +12,7 @@
     selSesion: $('[data-sel-sesion]'), selPagina: $('[data-sel-pagina]'), selCapa: $('[data-sel-capa]'),
     selEscala: $('[data-sel-escala]'), opacidad: $('[data-opacidad]'), info: $('[data-info]'),
     externo: $('[data-externo]'), escenario: $('[data-escenario]'), marco: $('[data-marco]'),
-    lienzo: $('[data-lienzo]')
+    lienzo: $('[data-lienzo]'), csv: $('[data-csv]')
   };
 
   /* ---------- Carga de ficheros ---------- */
@@ -55,15 +55,41 @@
       const tr = document.createElement('tr');
       const clics = s.paginas.reduce((n, p) => n + p.clics.length, 0);
       const mirada = s.paginas.reduce((n, p) => n + p.mirada.length, 0);
+      const p = s.perfil || {};
       tr.append(
-        celda(s.usuario), celda(s.dispositivo), celda(s.estado, `estado-${s.estado}`),
-        celda(s.duracionSegundos ?? '—', 'num'), celda(s.respuesta || '—'),
-        celda(s.paginas.map((p) => p.url.replace('.html', '')).join(' → ')),
-        celda(clics, 'num'), celda(mirada, 'num'), celda(s.seguimientoOcular ? 'Sí' : 'No')
+        celda(s.usuario), celda(s.dispositivo), celda(p.profesion || '—'), celda(p.edad ?? '—', 'num'),
+        celda(p.genero || '—'), celda(p.pericia ?? '—', 'num'), celda(s.estado, `estado-${s.estado}`),
+        celda(s.duracionSegundos ?? '—', 'num'), celda(s.respuesta || '—'), celda(p.valoracion ?? '—', 'num'),
+        celda(recorridoDe(s)), celda(clics, 'num'),
+        celda(`${mirada}${s.seguimientoOcular ? '' : ' (sin cámara)'}`, 'num'),
+        celda(p.problemas || '—'), celda(p.propuestas || '—')
       );
       el.resumen.append(tr);
     }
+    el.csv.disabled = !sesiones.length;
   };
+
+  const recorridoDe = (s) => s.paginas.map((p) => p.url.replace('.html', '')).join(' → ');
+
+  /* CSV con separador ";" para abrirlo o pegarlo directamente en Excel en español */
+  el.csv.addEventListener('click', () => {
+    const cab = ['Codigo', 'Profesion', 'Edad', 'Genero', 'Pericia', 'Dispositivo', 'Tiempo (s)', 'Estado',
+      'Respuesta', 'Valoracion', 'Problemas', 'Propuestas', 'Observaciones', 'Recorrido'];
+    const esc = (v) => `"${String(v ?? '').replace(/"/g, '""').replace(/\r?\n/g, ' ')}"`;
+    const num = (v) => (v === undefined || v === null || v === '' ? '' : String(v).replace('.', ','));
+    const filas = sesiones.map((s) => {
+      const p = s.perfil || {};
+      return [esc(s.usuario), esc(p.profesion), num(p.edad), esc(p.genero), num(p.pericia), esc(s.dispositivo),
+        num(s.duracionSegundos), esc(s.estado === 'completada' ? 'Completada' : 'Abandonada'), esc(s.respuesta),
+        num(p.valoracion), esc(p.problemas), esc(p.propuestas), esc(p.observaciones), esc(recorridoDe(s))].join(';');
+    });
+    const blob = new Blob(['﻿' + [cab.join(';'), ...filas].join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'usuarios-tanda2.csv';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
 
   /* ---------- Selectores ---------- */
   const opcion = (valor, texto) => { const o = document.createElement('option'); o.value = valor; o.textContent = texto; return o; };
@@ -92,6 +118,8 @@
   const rellenarPaginas = () => {
     const s = sesiones[el.selSesion.value];
     el.selPagina.replaceChildren(...(s ? paginasDe(s).map((g, i) => opcion(i, `${g.url} (${g.visitas} visita/s)`)) : []));
+    /* Sin datos de mirada, la capa útil es la de clics */
+    if (s && !s.paginas.some((p) => p.mirada.length)) el.selCapa.value = 'clics';
     dibujar();
   };
 

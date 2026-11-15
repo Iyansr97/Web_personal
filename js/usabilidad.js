@@ -1,8 +1,10 @@
 /* ============================================================================
  *  usabilidad.js — Herramienta de pruebas de usabilidad (tanda 2)
  *
- *  Solo se activa en "modo prueba", abriendo cualquier página con:
- *      index.html?usuario=U01&dispositivo=escritorio   (escritorio|tableta|telefono)
+ *  Solo se activa en "modo prueba". Para empezar una prueba basta con abrir:
+ *      prueba.html     → genera un código de usuario único, detecta el
+ *                        dispositivo (escritorio|tableta|telefono) y empieza.
+ *  También se puede forzar un código: index.html?usuario=U01&dispositivo=tableta
  *  Para recuperar los datos de la última prueba en ese navegador:
  *      index.html?prueba=descargar
  *
@@ -26,7 +28,7 @@
   const CLAVE = 'ux-prueba-activa';
   const CLAVE_ULTIMA = 'ux-prueba-ultima';
   const TANDA = 2;
-  const TAREA = 'Averigua cómo se llama el cantante y líder del grupo de música favorito de Iyán.';
+  const TAREA = 'Encuentra el nombre de la universidad en la que Iyán estudió la carrera de Ingeniería Informática.';
   const WEBGAZER_URL = 'https://cdn.jsdelivr.net/npm/webgazer@3.3.0/dist/webgazer.js';
   const MUESTREO_MIRADA_MS = 100;
   const CLICS_POR_PUNTO = 5;
@@ -42,9 +44,21 @@
     return ancho >= 600 ? 'tableta' : 'telefono';
   };
 
+  /* Código único: U-MMDD-XXXX (fecha + 4 caracteres aleatorios sin 0/O/1/I para evitar confusiones) */
+  const generarCodigo = () => {
+    const letras = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const azar = Array.from(crypto.getRandomValues(new Uint8Array(4)), (n) => letras[n % letras.length]).join('');
+    const hoy = new Date();
+    const mmdd = String(hoy.getMonth() + 1).padStart(2, '0') + String(hoy.getDate()).padStart(2, '0');
+    return `U-${mmdd}-${azar}`;
+  };
+
   /* ---------- Sesión ---------- */
   let sesion = leer(CLAVE);
-  const usuarioParam = params.get('usuario');
+  const nueva = params.get('prueba') === 'nueva';      // viene de prueba.html
+  const usuarioParam = nueva ? generarCodigo() : params.get('usuario');
+  /* Quita los parámetros de la URL: si el usuario recarga, sigue la misma sesión */
+  if (nueva || usuarioParam) history.replaceState(null, '', location.pathname + location.hash);
 
   if (usuarioParam && (!sesion || sesion.usuario !== usuarioParam)) {
     sesion = {
@@ -81,6 +95,9 @@
       .capa { position: fixed; inset: 0; z-index: 2147483646; display: grid; place-items: center;
               background: rgba(8, 26, 63, .82); padding: 16px; }
       .capa[hidden], .barra[hidden], .punto[hidden] { display: none; }
+      /* Paso «Coloca la cara»: la imagen de la cámara va en el centro y el panel abajo */
+      .capa[data-vista="posicion"] { place-items: end center; background: rgba(8, 26, 63, .9); }
+      .capa[data-vista="posicion"] .panel { max-width: 640px; padding: 16px 24px; }
       .panel { background: #fff; color: #1d2433; border-radius: 16px; padding: 24px; max-width: 520px;
                width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,.35); font-size: 17px; line-height: 1.5; }
       .panel h2 { margin: 0 0 12px; font-size: 22px; color: #123a7a; }
@@ -100,6 +117,13 @@
       .punto { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%;
                padding: 0; background: #d93025; box-shadow: 0 0 0 4px rgba(217,48,37,.25); }
       .punto.hecho { background: #1e8e3e; box-shadow: none; }
+      .capa:has(.cuestionario) { overflow-y: auto; place-items: start center; }
+      .cuestionario label { display: grid; gap: 4px; margin: 0 0 12px; font-weight: 600; font-size: 15px; }
+      .cuestionario select, .cuestionario textarea { font: inherit; width: 100%; padding: 8px 10px;
+               border: 2px solid #cfe0fa; border-radius: 10px; background: #fff; color: #1d2433; }
+      .cuestionario .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .cuestionario fieldset { border: 2px dashed #cfe0fa; border-radius: 10px; padding: 8px 12px 0; margin: 0; }
+      .cuestionario legend { font-size: 14px; color: #5b6578; padding: 0 4px; }
       .barra { position: fixed; right: 12px; bottom: 12px; z-index: 2147483645; display: flex; gap: 6px;
                padding: 6px; background: rgba(8,26,63,.9); border-radius: 14px; }
       .barra button { padding: 8px 12px; font-size: 15px; }
@@ -123,8 +147,9 @@
     <section class="capa" data-vista="posicion" hidden>
       <div class="panel">
         <h2>Coloca la cara</h2>
-        <p>Mira la imagen de la cámara (arriba a la izquierda) y centra la cara hasta que el recuadro
-           se vea verde. Después pulsa en los puntos rojos que irán apareciendo, mirándolos fijamente
+        <p>Colócate de frente, a unos 50 cm de la pantalla y con buena luz en la cara. Mueve la cabeza
+           hasta que tu cara quede dentro del recuadro y este se vuelva <strong>verde</strong>.
+           Después pulsa los puntos rojos que irán apareciendo, mirándolos fijamente
            (${CLICS_POR_PUNTO} veces cada uno).</p>
         <div class="acciones"><button data-accion="calibrar">Calibrar</button></div>
       </div>
@@ -139,7 +164,11 @@
         <h2>Todo listo</h2>
         <p class="tarea">${TAREA}</p>
         <p>El tiempo empieza a contar al pulsar <strong>Empezar</strong>.</p>
-        <div class="acciones"><button data-accion="empezar">Empezar</button></div>
+        <p class="aviso" data-aviso-fallo hidden></p>
+        <div class="acciones">
+          <button data-accion="empezar">Empezar</button>
+          <button class="sec" data-accion="preparar" data-reintentar hidden>Reintentar cámara</button>
+        </div>
       </div>
     </section>
 
@@ -162,6 +191,37 @@
           <button class="sec" data-accion="cerrar">Seguir buscando</button>
         </div>
       </div>
+    </section>
+
+    <section class="capa" data-vista="cuestionario" hidden>
+      <form class="panel cuestionario" data-cuestionario>
+        <h2>Unas preguntas más</h2>
+        <p>Responde con sinceridad: nos interesa saber qué te ha resultado difícil.</p>
+        <label>Profesión <input name="profesion" required></label>
+        <div class="fila">
+          <label>Edad <input name="edad" type="number" min="1" max="120" required></label>
+          <label>Género
+            <select name="genero" required>
+              <option value="">—</option>
+              <option>Mujer</option><option>Hombre</option><option>No binario</option><option>Prefiero no decirlo</option>
+            </select>
+          </label>
+        </div>
+        <label>¿Qué problemas has encontrado al usar la web?
+          <textarea name="problemas" rows="3"></textarea></label>
+        <label>¿Qué mejorarías?
+          <textarea name="propuestas" rows="3"></textarea></label>
+        <label>Valoración de la web (0 = muy mala, 10 = excelente)
+          <input name="valoracion" type="number" min="0" max="10" step="0.5" required></label>
+        <fieldset>
+          <legend>A rellenar por el evaluador</legend>
+          <label>Pericia informática (0–10)
+            <input name="pericia" type="number" min="0" max="10" step="0.5" required></label>
+          <label>Observaciones del evaluador
+            <textarea name="observaciones" rows="2"></textarea></label>
+        </fieldset>
+        <div class="acciones"><button type="submit">Guardar</button></div>
+      </form>
     </section>
 
     <section class="capa" data-vista="final" hidden>
@@ -288,7 +348,22 @@
   };
 
   /* ---------- WebGazer ---------- */
+  /* Vista previa de la cámara de WebGazer:
+     - true  → en el centro y más grande (paso «Coloca la cara»)
+     - false → oculta (calibración y prueba), para que no tape nada; la cámara sigue funcionando.
+     Se escala el contenedor entero para que el vídeo y el recuadro de la cara sigan alineados. */
+  const centrarVideo = (centrado) => {
+    const video = document.getElementById('webgazerVideoContainer');
+    if (!video) return;
+    const escala = Math.min(2, (innerWidth * 0.9) / 320, (innerHeight * 0.55) / 240);
+    Object.assign(video.style, centrado
+      ? { visibility: 'visible', top: '38%', left: '50%', transformOrigin: 'center',
+          transform: `translate(-50%, -50%) scale(${escala})`, boxShadow: '0 0 0 4px #fff' }
+      : { visibility: 'hidden', top: '0px', left: '0px', transform: 'none', boxShadow: 'none' });
+  };
+
   let ultimaMirada = 0;
+  let ultimoFallo = '';
   const contextoSeguro = window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
 
   const cargarWebGazer = () => new Promise((resolver, rechazar) => {
@@ -303,8 +378,13 @@
   const iniciarMirada = async ({ limpiar = false, verVideo = false } = {}) => {
     if (!contextoSeguro) return false;
     try {
+      /* WebGazer oculta los errores de cámara: se comprueba antes para conocer el motivo real */
+      if (limpiar) {
+        const prueba = await navigator.mediaDevices.getUserMedia({ video: true });
+        prueba.getTracks().forEach((pista) => pista.stop());
+      }
       const wg = await cargarWebGazer();
-      wg.params.showVideoPreview = verVideo;
+      if (wg.params) wg.params.showVideoPreview = verVideo;
       wg.saveDataAcrossSessions(true);
       wg.setRegression('ridge');
       wg.applyKalmanFilter(true);
@@ -317,14 +397,25 @@
         programarGuardado();
       });
       await wg.begin();
+      if (!document.getElementById('webgazerVideoFeed')) throw new Error('La cámara no se ha iniciado');
       if (limpiar) await wg.clearData();
       wg.showPredictionPoints(false);
       wg.showVideoPreview(verVideo);
       const video = document.getElementById('webgazerVideoContainer');
       if (video) video.style.zIndex = '2147483647';
+      centrarVideo(verVideo);
       return true;
     } catch (error) {
       console.warn('[usabilidad] Seguimiento ocular no disponible:', error);
+      const motivos = {
+        NotAllowedError: 'se ha denegado el permiso de la cámara (actívalo en el icono de la cámara de la barra de direcciones)',
+        NotFoundError: 'no se ha encontrado ninguna cámara conectada',
+        NotReadableError: 'la cámara está en uso por otra aplicación (Teams, Zoom, la app Cámara…)',
+        OverconstrainedError: 'la cámara no admite la resolución pedida'
+      };
+      ultimoFallo = motivos[error && error.name] ||
+        (/WebGazer/.test(error && error.message) ? 'no se ha podido descargar WebGazer (¿sin conexión a Internet?)'
+          : `error inesperado (${(error && (error.name || error.message)) || error})`);
       return false;
     }
   };
@@ -376,8 +467,18 @@
     guardar(CLAVE_ULTIMA, sesion);
     borrar(CLAVE);
     if (window.webgazer) { try { window.webgazer.end(); } catch { /* nada */ } }
-    pantallaFinal(sesion);
+    mostrar('cuestionario');
   };
+
+  /* Cuestionario posterior: datos del usuario, opinión y valoración del evaluador */
+  $('[data-cuestionario]').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const datos = Object.fromEntries(new FormData(e.target));
+    ['edad', 'valoracion', 'pericia'].forEach((k) => { datos[k] = Number(datos[k]); });
+    sesion.perfil = datos;
+    guardar(CLAVE_ULTIMA, sesion);
+    pantallaFinal(sesion);
+  });
 
   raiz.addEventListener('click', async (e) => {
     const boton = e.target.closest('[data-accion]');
@@ -389,11 +490,17 @@
           mostrar('posicion');
         } else {
           sesion.seguimientoOcular = false;
+          const aviso = $('[data-aviso-fallo]');
+          aviso.textContent = `Seguimiento ocular desactivado: ${contextoSeguro ? ultimoFallo
+            : 'la cámara solo funciona en HTTPS o en localhost'}. Puedes reintentarlo o seguir solo con clics.`;
+          aviso.hidden = false;
+          $('[data-reintentar]').hidden = !contextoSeguro;
           mostrar('listo');
         }
         guardar(CLAVE, sesion);
         break;
       case 'calibrar':
+        centrarVideo(false);
         if (window.webgazer) window.webgazer.showVideoPreview(false);
         await calibrar();
         mostrar('listo');
