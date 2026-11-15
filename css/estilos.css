@@ -544,7 +544,7 @@ body > footer address a {
     [id] { scroll-margin-top: 1rem; }
 
     body > header > details { order: 2; }
-    body > header > button[aria-expanded] { display: block; order: 3; }
+    body > header > button[aria-expanded] { display: inline-flex; align-items: center; gap: .4rem; order: 3; }
     body > header > nav { order: 4; }
     body > header > form { order: 5; width: 100%; }
     body > header > form input { flex: 1; width: auto; }

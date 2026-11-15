@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Iyán Solís Rodríguez">
+    <meta name="description" content="Buscador del sitio web personal de Iyán Solís Rodríguez.">
+    <title>Buscar · Iyán Solís Rodríguez</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='20'%20fill='%23081a3f'/%3E%3Ctext%20x='50'%20y='70'%20font-size='60'%20font-family='Arial'%20text-anchor='middle'%20fill='white'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="alternate" hreflang="es" href="buscar.html">
+    <link rel="alternate" hreflang="en" href="en/search.html">
+    <link rel="alternate" hreflang="x-default" href="buscar.html">
+    <link rel="stylesheet" href="css/estilos.css?v=mwi3gbn0">
+    <script src="js/principal.js?v=mwi3gbn0" defer></script>
+    <script src="js/indice-busqueda.js?v=mwi3gbn0" defer></script>
+    <script src="js/buscador.js?v=mwi3gbn0" defer></script>
+    <script src="js/usabilidad.js?v=mwi3gbn0" defer></script>
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido principal</a>
+
+    <header>
+        <p><a href="index.html">Iyán Solís</a></p>
+
+        <details>
+            <summary aria-label="Idioma: Español"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.93 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 0 1 5.07 16zm2.95-8H5.07a7.99 7.99 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.02 8zM12 19.96A14.1 14.1 0 0 1 10.09 16h3.82A14.1 14.1 0 0 1 12 19.96zM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4h-3.38z"/></svg> Español</summary>
+            <ul>
+                <li><a href="buscar.html" hreflang="es" lang="es" aria-current="true">Español</a></li>
+                <li><a href="en/search.html" hreflang="en" lang="en">English</a></li>
+            </ul>
+        </details>
+
+        <button id="btn-menu" type="button" aria-controls="navegacion busqueda">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v2.2H3zM3 10.9h18v2.2H3zM3 16.8h18V19H3z"/></svg> Menú
+        </button>
+
+        <nav id="navegacion" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre mí</a></li>
+                <li><a href="musica.html">Música</a></li>
+                <li><a href="cine-series.html">Cine y series</a></li>
+                <li><a href="viajes.html">Viajes</a></li>
+                <li><a href="deportes.html">Deportes</a></li>
+                <li><a href="videojuegos.html">Videojuegos</a></li>
+                <li><a href="tecnologia.html">Tecnología</a></li>
+                <li><a href="ayuda.html">Ayuda</a></li>
+            </ul>
+        </nav>
+
+        <form id="busqueda" role="search" action="buscar.html" aria-label="Buscador del sitio">
+            <label for="q-cabecera">Buscar en el sitio</label>
+            <input id="q-cabecera" type="search" name="q" placeholder="Buscar…" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main id="contenido">
+
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="buscar.html" aria-current="page">Buscar</a></li>
+            </ol>
+        </nav>
+
+        <header>
+            <h1>Buscar</h1>
+            <p>Busca en todo el contenido del sitio: aficiones, formación, proyectos, contacto…</p>
+        </header>
+
+        <section aria-labelledby="titulo-resultados">
+
+            <h2 id="titulo-resultados">Resultados</h2>
+
+            <p id="resumen-busqueda" role="status">Escribe una o varias palabras y pulsa «Buscar».</p>
+
+
+            <noscript>
+                <p>
+                    El buscador necesita JavaScript. Puedes encontrar todas las páginas en el
+                    <a href="ayuda.html#titulo-mapa">mapa del sitio</a>.
+                </p>
+            </noscript>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <strong>Contacto</strong>
+            <ul aria-label="Correo y redes sociales">
+                <li><a href="mailto:iyansr97@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> iyansr97@gmail.com</a></li>
+                <li><a href="mailto:UO295103@uniovi.es"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.2L3.5 6.5v11h17v-11L12 12.2zM4.9 6l7.1 4.7L19.1 6H4.9z"/></svg> UO295103@uniovi.es</a></li>
+                <li><a href="https://www.linkedin.com/in/iy%C3%A1n-sol%C3%ADs-rodr%C3%ADguez-953772383/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></li>
+                <li><a href="https://github.com/Iyansr97"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></li>
+            </ul>
+        </address>
+
+        <p>Última actualización: <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
+
+        <p>
+            © <time id="anio">2026</time> Iyán Solís Rodríguez ·
+            Sitio web personal con HTML5, CSS3 y JavaScript. · <a href="ayuda.html">Ayuda y accesibilidad</a>
+        </p>
+    </footer>
+
+</body>
+</html>
